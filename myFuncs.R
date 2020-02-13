@@ -7,3 +7,8 @@ addError <- function(msg){
   prevErrorMsg <- errorMsg
   errorMsg <<- append(prevErrorMsg, msg, after = length(errorMsg))
 }
+
+DTquery <- function(mydb, sql){
+  rs <- dbSendQuery(mydb, sql)
+  return(setDT(fetch(rs, n=-1)))
+}
